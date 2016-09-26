@@ -10,9 +10,11 @@ def api(request):
 	from bs4 import BeautifulSoup
 	r = requests.get(request.GET['url'],headers={'user-agent': 'Extract/0.0.1'})
 	soup = BeautifulSoup(r.content, 'html.parser')
-	images = soup.find_all('img')
+	image = soup.find_all("div", id="imgTagWrapperId")
+	name = soup.find_all("span", id="productTitle")
+	price = soup.find_all("span", id="priceblock_ourprice")
 	
-	return render(request,'api.html',{'request':request,'images':images})
+	return render(request,'api.html',{'request':request,'image':image,'name':name,'price':price})
 
 def contact(request):
 	return render(request,'contact.html',{})	
