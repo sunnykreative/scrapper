@@ -58,11 +58,11 @@
                             <!-- Question Area Panel -->
                             <div class="listing-area">
                                 <div class="col-md-6">
-                                 {{image}} 
+                                    {{ images|safeseq|join:", "}}
                                 </div>
                                 <div class="col-md-6">
-                                <h2> Name: <strong>{{name}}</strong></h2>
-                                <h2>  Price:<strong>{{price}}</strong></h2>
+                                <h4> Name: <strong>{{ name|safeseq|join:", "  }}</strong></h4>
+                                <h4>  Price:<strong>{{ price|safeseq|join:", "  }}</strong></h4>
                                 </div>
 
                             </div>
@@ -78,10 +78,10 @@
                                     <h2>API We Provide</h2>
                                     <hr class="widget-separator no-margin">
                                     <ul>
-                                        <li><a href="#">Analyse API</a></li>
-                                        <li><a href="#">Image API</a></li>
-                                        <li><a href="#">Video API</a></li>
-                                        <li><a href="#">Product API</a></li>
+                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=analyse">Analyse API</a></li>
+                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=image">Image API</a></li>
+                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=video">Video API</a></li>
+                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=product">Product API</a></li>
                                     </ul>
                                 </div>
                             </div>
