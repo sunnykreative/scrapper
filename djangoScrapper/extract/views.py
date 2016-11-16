@@ -15,8 +15,14 @@ def api(request):
 	image = soup.find_all("div", id="imgTagWrapperId")
 	name = soup.find_all("span", id="productTitle")
 	price = soup.find_all("span", id="priceblock_ourprice")
+	details = soup.find_all("div", id="detail_bullets_id")
+	productDescription = soup.find_all("div", id="productDescription")
+	review = soup.find_all("table", id="histogramTable")
+
 	
-	return render(request,'api.html',{'request':request,'images':image,'name':name,'price':price})
+	
+	
+	return render(request,'api.html',{'request':request,'images':image,'name':name,'price':price,'details':details,'description':productDescription,'review':review})
 
 def contact(request):
 	return render(request,'contact.html',{})	
