@@ -18,11 +18,13 @@ def api(request):
 	details = soup.find_all("div", id="detail_bullets_id")
 	productDescription = soup.find_all("div", id="productDescription")
 	review = soup.find_all("table", id="histogramTable")
+	productDetailsTable = soup.find_all("table", id="productDetailsTable")
+	
 
 	
 	
 	
-	return render(request,'api.html',{'request':request,'images':image,'name':name,'price':price,'details':details,'description':productDescription,'review':review})
+	return render(request,'api.html',{'request':request,'images':image,'name':name,'price':price,'details':details,'description':productDescription,'review':review,'productDetailsTable':productDetailsTable})
 
 def contact(request):
 	return render(request,'contact.html',{})	
