@@ -25,6 +25,12 @@ def scrape_data(r,request):
 				review=htmlContent.select(row[3]) if (row[3]!='') else ''
 				productDescription=htmlContent.select(row[4]) if (row[4]!='') else ''
 				
+				# image=row[5]
+				# name = row[1]
+				# price=htmlContent.select(row[2]) if (row[2]!='') else ''
+				# review=htmlContent.select(row[3]) if (row[3]!='') else ''
+				# productDescription=htmlContent.select(row[4]) if (row[4]!='') else ''
+
 
 		if(domainExists!='true'):
 			name='TRAVERSE WILL BE DONE'
