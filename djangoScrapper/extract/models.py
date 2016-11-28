@@ -11,8 +11,8 @@ def scrape_data(r,request):
 	domain = '{uri.netloc}'.format(uri=parsed_uri)
 
 	htmlContent = BeautifulSoup(r.content, 'html.parser')
-
-	with open('/Users/apple/Desktop/scrapper/djangoScrapper/static/scrapping_dataset.csv') as f:
+	csvFile=os.path.abspath(os.path.dirname(__file__))+'/../static/scrapping_dataset.csv'
+	with open(csvFile) as f:
 		reader = csv.reader(f, delimiter=',')
 
 		for row in reader:
