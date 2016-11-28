@@ -9,10 +9,10 @@
         <div class="search-area container">
             <h3 class="search-title">Test a url.</h3>
             <p class="search-tag-line">You just need to enter the url and we will extract the data for you!</p>
-            <form autocomplete="off" method="get" class="search-form clearfix" action="{% url 'extract.views.api'%}" id="search-form">
+            <form autocomplete="off" method="get" class="search-form clearfix" action="{% url 'api'%}" id="search-form">
                 {% csrf_token %}
                 <input type="url" placeholder="Enterk the url to process" class="search-term " autocomplete="off" name="url" value="{{request.GET.url}}" required>
-                <select name="action" id="action" class="form-control">
+                <select name="action" id="action" class="form-control" style="height: 48px;">
                     <option value="analyse" {% if request.GET.action == "analyse" %} selected {% endif %}>Analyse API</option>
                     <option value="article" {% if request.GET.action == "article" %} selected {% endif %} >Article API</option>
                     <option value="discussion" {% if request.GET.action == "discussion" %} selected {% endif %}>Discussion API</option>
@@ -38,7 +38,7 @@
                     <div class="col-md-6 col-sm-5 co-xs-12 text-right">
                         <div class="bread">
                             <ol class="breadcrumb">
-                                <li><a href="{% url 'extract.views.index' %}">Home</a></li>
+                                <li><a href="{% url 'index' %}">Home</a></li>
                                 <li class="active">API </li>
                             </ol>
                         </div>
@@ -71,7 +71,9 @@
                                 <div class="col-md-6">
                                 <h4 class="marBottom16">Name: <strong>{{ name|safeseq|join:", "  }}</strong></h4>
                                 <h4>Price:<strong>{{ price|safeseq|join:", "  }}</strong></h4>
-                                <h4>Review:<strong>{{ review|safeseq|join:", "  }}</strong></h4>
+                                {% if review %}
+                                    <h4>Review:<strong>{{ review|safeseq|join:", "  }}</strong></h4>
+                                {% endif %}
                                 </div>
 
 
@@ -88,10 +90,10 @@
                                     <h2>API We Provide</h2>
                                     <hr class="widget-separator no-margin">
                                     <ul>
-                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=analyse">Analyse API</a></li>
-                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=image">Image API</a></li>
-                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=video">Video API</a></li>
-                                        <li><a href="{% url 'extract.views.api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=product">Product API</a></li>
+                                        <li><a href="{% url 'api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=analyse">Analyse API</a></li>
+                                        <li><a href="{% url 'api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=image">Image API</a></li>
+                                        <li><a href="{% url 'api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=video">Video API</a></li>
+                                        <li><a href="{% url 'api'%}?csrfmiddlewaretoken={{csrf_token}}&url={{request.GET.url|urlencode:''}}&action=product">Product API</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -101,12 +103,10 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-9">
-                    <h4>Details:</h4>
-                                {{ details|safeseq|join:", "  }}
-                                 {{ productDetailsTable|safeseq|join:", "  }}
+                    {% if description %}
                         <h4>Product Description:</h4>
-                                {{ description|safeseq|join:", "  }}
-                               
+                        {{ description|safeseq|join:", "  }}
+                    {% endif %}
                     </div>
                 </div>
                 <!-- Row End -->

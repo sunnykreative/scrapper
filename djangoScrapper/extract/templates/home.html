@@ -6,10 +6,10 @@
     <div class="search-area container">
         <h3 class="search-title">Test a url.</h3>
         <p class="search-tag-line">You just need to enter the url and we will extract the data for you!</p>
-        <form autocomplete="off" method="get" class="search-form clearfix" action="{% url 'extract.views.api'%}" id="search-form">
+        <form autocomplete="off" method="get" class="search-form clearfix" action="{% url 'api' %}" id="search-form">
         {% csrf_token %}
             <input type="url" placeholder="Enterk the url to process" class="search-term " autocomplete="off" name="url" value="http://" required>
-            <select name="action" id="action" class="form-control">
+            <select name="action" id="action" class="form-control" style="height: 48px;">
                 <option value="analyse">Analyse API</option>
                 <option value="article">Article API</option>
                 <option value="discussion">Discussion API</option>
