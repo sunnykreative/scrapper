@@ -14,7 +14,7 @@ def scrape_data(r,request):
 	csvFile=os.path.abspath(os.path.dirname(__file__))+'/../static/scrapping_dataset.csv'
 	with open(csvFile) as f:
 		reader = csv.reader(f, delimiter=',')
-
+		domainExists='false'
 		for row in reader:
 			# 0 for image 1 for name 2 is price 3 is review 4 is description 5 is domain
 			if(row[5]==domain):
