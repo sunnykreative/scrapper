@@ -69,8 +69,8 @@
                                     {{ images|safeseq|join:", "}}
                                 </div>
                                 <div class="col-md-6">
-                                <h4 class="marBottom16">Name: <strong>{{ name|safeseq|join:", "  }}</strong></h4>
-                                <h4>Price:<strong>{{ price|safeseq|join:", "  }}</strong></h4>
+                                <h4 class="marBottom16">Name: <strong>{{ name|striptags }}</strong></h4>
+                                <h4>Price:<strong>{{ price|striptags }}</strong></h4>
                                 {% if review %}
                                     <h4>Review:<strong>{{ review|safeseq|join:", "  }}</strong></h4>
                                 {% endif %}
