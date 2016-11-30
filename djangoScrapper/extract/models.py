@@ -49,8 +49,13 @@ def scrape_data(r,request):
 
 			if(commondomainExists!='true'):
 				name=htmlContent.select('h1') if(htmlContent.select('h1')) else ''
-				
-				image=''
+				imageurl = htmlContent.find('meta', attrs={'property': 'og:image', 'content': True})
+				if imageurl:
+				    image = '<img class="maxWidth600" src="'+imageurl['content']+'"/>'
+				else:
+				    image='<img class="maxWidth600" src="/static/images/no-image.jpg"/>'
+
+				# image=''
 				price=''
 				productDescription=''
 				review=''

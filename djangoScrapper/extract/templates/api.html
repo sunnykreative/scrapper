@@ -56,6 +56,7 @@
             .histogramButton{display: none}
             #productDescription p{display: block}
             #productDescription img,#productDescription h1,#productDescription h2,#productDescription h3,#productDescription h4,#productDescription a,#productDescription h5,#productDescription .aplus{display: none}
+            .maxWidth600{max-width: 100%}
         </style>
         <section class="section-padding-80 white" id="questions">
             <div class="container">
@@ -66,7 +67,7 @@
                             <!-- Question Area Panel -->
                             <div class="listing-area">
                                 <div class="col-md-6">
-                                    {{ images|safeseq|join:", "}}
+                                    {{ images|safeseq|join:""}}
                                 </div>
                                 <div class="col-md-6">
                                 <h4 class="marBottom16">Name: <strong>{{ name|striptags }}</strong></h4>
