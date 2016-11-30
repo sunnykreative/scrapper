@@ -70,8 +70,14 @@
                                     {{ images|safeseq|join:""}}
                                 </div>
                                 <div class="col-md-6">
-                                <h4 class="marBottom16">Name: <strong>{{ name|striptags }}</strong></h4>
-                                <h4>Price:<strong>{{ price|striptags }}</strong></h4>
+                                {% if price %}
+                                    <h4 class="marBottom16">Name: <strong>{{ name|striptags }}</strong></h4>
+                                {% else %}
+                                    <h4 class="marBottom16">Product Name Couldn't be Extracted</h4>
+                                {% endif %}
+                                {% if price %}
+                                    <h4>Price:<strong>{{ price|striptags }}</strong></h4>
+                                {% endif %}
                                 {% if review %}
                                     <h4>Review:<strong>{{ review|safeseq|join:", "  }}</strong></h4>
                                 {% endif %}
@@ -104,6 +110,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-9">
+
                     {% if description %}
                         <h4>Product Description:</h4>
                         {{ description|safeseq|join:", "  }}
