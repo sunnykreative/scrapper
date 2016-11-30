@@ -34,7 +34,6 @@ def scrape_data(r,request):
 		# If Domain is not mentioned on the dataset
 		if(domainExists!='true'):
 			name=htmlContent.select('h1') if(htmlContent.select('h1')) else ''
-			print(name)
 			imageurl = htmlContent.find('meta', attrs={'property': 'og:image', 'content': True})
 			imagenameUrl = htmlContent.find('meta', attrs={'name': 'og:image', 'content': True})
 			if imageurl:
@@ -42,7 +41,8 @@ def scrape_data(r,request):
 			elif imagenameUrl:
 				image = '<img class="maxWidth600" src="'+imagenameUrl['content']+'"/>'
 			else:
-			    image='<img class="maxWidth600" src="/static/images/no-image.jpg"/>'
+			    # image='<img class="maxWidth600" src="/static/images/no-image.jpg"/>'
+			    image=''
 
 			csvFileNotExist=os.path.abspath(os.path.dirname(__file__))+'/../static/commondataset.csv'			
 			with open(csvFileNotExist) as common:
@@ -57,10 +57,21 @@ def scrape_data(r,request):
 					    if(priceTest):
 					    	price = priceTest
 					    
+					    if(name==''):
+					    	nameTest= htmlContent.select(itemRow[1])
+					    	if(nameTest):
+					    		name=nameTest
+
+					    if(image==''):
+					    	imageTest=htmlContent.select(itemRow[2])
+					    	if(imageTest):
+					    		image=imageTest
+					    
 					except NameError:
 					    Nochange = None
 
-
+	if(image==''):
+		image='<img class="maxWidth600" src="/static/images/no-image.jpg"/>'
 	return {'request':request,'images':image,'name':name,'price':price,'description':productDescription,'review':review}
 
 

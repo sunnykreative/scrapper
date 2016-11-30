@@ -1,6 +1,6 @@
-xPathPrice
-span.pdp-final-price
-span.actual-price
-p.price
-div.bose-price__price.bose-price__price--productPage
-p.special-price > span.price
+cssSelectorPrice,cssSelectorName,cssSelectorImage
+span.pdp-final-price,#container ._1vC4OE._37U4_g,#container ._1-baVo img
+span.actual-price,#productname,.mainimage
+p.price,.productname,img.main
+div.bose-price__price.bose-price__price--productPage,span.product-name,img.main-image
+p.special-price > span.price,p.product-name,img.mainImg
