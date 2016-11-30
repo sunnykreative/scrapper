@@ -34,6 +34,7 @@ def scrape_data(r,request):
 		# If Domain is not mentioned on the dataset
 		if(domainExists!='true'):
 			name=htmlContent.select('h1') if(htmlContent.select('h1')) else ''
+			print(name)
 			imageurl = htmlContent.find('meta', attrs={'property': 'og:image', 'content': True})
 			imagenameUrl = htmlContent.find('meta', attrs={'name': 'og:image', 'content': True})
 			if imageurl:
