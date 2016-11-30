@@ -4,3 +4,4 @@ span.actual-price,#productname,.mainimage
 p.price,.productname,img.main
 div.bose-price__price.bose-price__price--productPage,span.product-name,img.main-image
 p.special-price > span.price,p.product-name,img.mainImg
+span#priceblock_saleprice,span#productTitle,#imgTagWrapperId img
