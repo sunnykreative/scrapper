@@ -35,8 +35,11 @@ def scrape_data(r,request):
 		if(domainExists!='true'):
 			name=htmlContent.select('h1') if(htmlContent.select('h1')) else ''
 			imageurl = htmlContent.find('meta', attrs={'property': 'og:image', 'content': True})
+			imagenameUrl = htmlContent.find('meta', attrs={'name': 'og:image', 'content': True})
 			if imageurl:
 			    image = '<img class="maxWidth600" src="'+imageurl['content']+'"/>'
+			elif imagenameUrl:
+				image = '<img class="maxWidth600" src="'+imagenameUrl['content']+'"/>'
 			else:
 			    image='<img class="maxWidth600" src="/static/images/no-image.jpg"/>'
 
